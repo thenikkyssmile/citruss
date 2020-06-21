@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="password" placeholder="Masukkan Password">
+                                    <input class="form-control" type="password" name="password" placeholder="Masukkan Password">
                                 </div>
                                 <div class="col-md-12">
                                     <?php echo form_error('password','<span class="text-danger">','</span>') ?>

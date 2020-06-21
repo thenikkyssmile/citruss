@@ -23,13 +23,14 @@ class M_query extends CI_Model {
                 {
                     $session = array('level' =>$row);
                 }
-                $this->load->view('v_dashboard');
+                $this->load->view('v_mahasiswa');
             }
         }
         else
         {
             $this->session->set_flashdata('pesan', 'Username/Password tidak valid!');
-            $this->load->view('C_login');
+            redirect('C_login', 'refresh');
         }
     }
+
 }

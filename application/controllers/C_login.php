@@ -28,8 +28,9 @@ class C_login extends CI_Controller {
 	
 	 public function index()
 	{
-		if ($this->session->userdata('level') == "admin"){
-			redirect('C_dashboard', 'refresh');
+		if($this->session->userdata('level') == "admin")
+		{
+			redirect('C_mahasiswa', 'refresh');
 		}
 		$this->load->view('v_login');
 	}
@@ -37,7 +38,7 @@ class C_login extends CI_Controller {
 	public function user_login()
 	{
 		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[3]');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">','</span>');
 		if ($this->form_validation->run() )
 		{
@@ -49,11 +50,6 @@ class C_login extends CI_Controller {
 		{
 			$this->index();
 		}
-	}
-
-	public function dashboard()
-	{
-		$this->load->view('v_dashboard');
 	}
 
 		public function keluar()
