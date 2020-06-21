@@ -33,4 +33,9 @@ class M_query extends CI_Model {
         }
     }
 
+    public function TambahMahasiswa($data)
+    {
+        $this->db->insert('tb_mahasiswa', $data);
+    }
+
 }
