@@ -12,8 +12,9 @@ class C_mahasiswa extends CI_Controller {
 	}
 
 	public function index()
-	{
-		$this->load->view('v_mahasiswa');
+	{ 
+		$data = $this->m_query->dataMahasiswa();
+		$this->load->view('v_mahasiswa', ['data'=>$data]);
 	}
 
 	public function insertMahasiswa()

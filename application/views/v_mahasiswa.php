@@ -7,12 +7,15 @@
     <title>mahasiswa</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/datatables.min.css">
-    
+    <style type="text/css" media="screen">
+        th,td{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
     <h1 align="center">Datatable</h1><br>
-    <h1><?php echo anchor('C_login/keluar', 'keluar', 'attributes'); ?></h1>
 
     <?php if($pesan = $this->session->flashdata('pesan')): ?>
         <div class="form-group">
@@ -25,6 +28,10 @@
         </div>
     <?php endif ?>
 
+        <div class="row">
+            <a onclick="return confirm('Are you Sure?')" href="<?php echo base_url('c_login/keluar') ?>" class="btn btn-sm btn-info" style="float: right;">Log Out</a>
+        </div>
+
     <a style="margin-bottom: 10px;" href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#AddModal">Tambah</a>
     <table id="datatable" class="table table-hover table-striped">
         <thead>
@@ -34,19 +41,43 @@
                 <th>Nama</th>
                 <th>Alamat</th>
                 <th>Status</th>
+                <th>Opsi</th>
             </tr> 
         </thead>
-        <tbody>
+        <?php 
+            $no = 1;
+            if ($data->num_rows() > 0) {
+                foreach ($data->result() as $row){
+        ?>
             <tr>
-                <td>data</td>
-                <td>data</td>
-                <td>data</td>
-                <td>data</td>
-                <td>data</td>
+                    <td><?php echo $no++; ?></td>
+                    <td><?php echo $row->nim; ?></td>
+                    <td><?php echo $row->nama; ?></td>
+                    <td><?php echo $row->alamat; ?></td>
+                    <?php if ($row->status == "Aktif"): ?>
+                        <td>
+                            <span class="label label-success">
+                                <?php echo $row->status; ?>
+                            </span>
+                        </td>
+                    <?php else: ?>
+                        <td>
+                            <span class="label label-danger">
+                                <?php echo $row->status; ?>
+                            </span>
+                        </td>
+                    <?php endif ?>
+                    <td>
+                        <a href="" class="btn btn-sm btn-warning">Ubah</a>
+                        <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                    </td>
             </tr>
-        </tbody>
+        <?php
+                }
+            }
+        ?>
     </table>
-    </div>
+</div>
     
     <div id="AddModal" class="modal fade">
         <div class="modal-dialog">
@@ -58,7 +89,7 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url('C_mahasiswa/insertMahasiswa') ?>" method="post" accept-charset="utf-8">
+                    <form action="<?php echo base_url('C_mahasiswa/insertMahasiswa') ?>" method="post">
                         <div class="form-group">
                             <label>Nim</label>
                             <input class="form-control" type="text" name="nim" placeholder="Masukkan Nim" required="">
@@ -91,8 +122,8 @@
                             <?php echo form_error('status', '<span class="text-danger">', '</span>') ?>
                         </div>
                         <div class="form-group">
-                          <input class="btn btn-default" type="button" value="Batal" data-dismiss="modal">
-                          <input class="btn btn-primary" type="submit" value="Simpan">
+                          <input class="btn btn-sm btn-default" type="button" value="Batal" data-dismiss="modal">
+                          <input class="btn btn-sm btn-primary" type="submit" value="Simpan">
                         </div>
                     </form>
                 </div>

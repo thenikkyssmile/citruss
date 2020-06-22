@@ -21,9 +21,10 @@ class M_query extends CI_Model {
             {
                 if($row->level =="admin")
                 {
-                    $session = array('level' =>$row);
+                    $session = array('level' =>'admin');
+                    $this->session->set_userdata($session);
                 }
-                $this->load->view('v_mahasiswa');
+                redirect('C_mahasiswa', 'refresh');
             }
         }
         else
@@ -31,6 +32,15 @@ class M_query extends CI_Model {
             $this->session->set_flashdata('pesan', 'Username/Password tidak valid!');
             redirect('C_login', 'refresh');
         }
+    }
+
+    public function dataMahasiswa()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_mahasiswa');
+        $this->db->order_by('nim', 'asc');
+        $data = $this->db->get('');
+        return $data;
     }
 
     public function TambahMahasiswa($data)
