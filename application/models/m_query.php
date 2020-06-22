@@ -48,4 +48,13 @@ class M_query extends CI_Model {
         $this->db->insert('tb_mahasiswa', $data);
     }
 
+    public function AmbilDataMahasiswa($id)
+    {
+       $data = $this->db->where(['id'=>$id])
+                        ->get("tb_mahasiswa");
+        if ($data->num_rows() < 0) {
+            return $data->row();
+        }
+    }
+
 }

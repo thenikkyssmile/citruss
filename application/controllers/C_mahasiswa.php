@@ -52,4 +52,10 @@ class C_mahasiswa extends CI_Controller {
 			$this->index();
 		}
 	}
+
+	public function EditMahasiswa($id)
+	{
+		$data = $this->m_query->AmbilDataMahasiswa($id);
+		$this->load->view('v_editmahasiswa', ['data'=>$data]);
+	}
 }

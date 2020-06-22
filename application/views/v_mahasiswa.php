@@ -68,7 +68,7 @@
                         </td>
                     <?php endif ?>
                     <td>
-                        <a href="" class="btn btn-sm btn-warning">Ubah</a>
+                        <a href="<?php echo base_url("C_mahasiswa/EditMahasiswa/{$row->id}") ?>" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-sm btn-warning">Ubah</a>
                         <a href="" class="btn btn-sm btn-danger">Hapus</a>
                     </td>
             </tr>
