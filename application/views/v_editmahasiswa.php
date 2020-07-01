@@ -7,73 +7,50 @@
     <title>edit mahasiswa</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/slate.bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>css/datatables.min.css">
 
-</head>
+</head> 
 <body>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-lg-offset-3"><br>
         <div class="well bs-component">
           <form class="form-horizontal">
             <fieldset>
-                <legend>Legend</legend>
+                <legend class="text-primary">Edit</legend>
                 <div class="form-group">
                     <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                       <?php echo form_input(['name'=>'nim',
+                                            'class'=>'form-control',
+                                            'placeholder'=>'Nim',
+                                            'value'=>set_value('nim', $data->nim)]); ?>
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Checkbox
-                            </label>
-                        </div>
+                       <?php echo form_input(['name'=>'nama',
+                                            'class'=>'form-control',
+                                            'placeholder'=>'Nama',
+                                            'value'=>set_value('nama', $data['nama'])]); ?>
                     </div>
                 </div>
+
                 <div class="form-group">
-                <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-                    <div class="col-lg-10">
-                        <textarea class="form-control" rows="3" id="textArea"></textarea>
-                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                   <label class="col-lg-2 control-label">Radios</label>
-                    <div class="col-lg-10">
-                        <div class="radio">
-                          <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                            Option one is this
-                          </label>
+                    <label for="textArea" class="col-lg-2 control-label">Alamat</label>
+                        <div class="col-lg-10">
+                            <?php
+                                echo form_textarea(['name'=>'alamat',
+                                                    'class'=>'form_control',
+                                                    'value'=>set_value('alamat', $data->alamat)]);
+                            ?>
                         </div>
-                        <div class="radio">
-                          <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            Option two can be something else
-                          </label>
-                        </div>
-                    </div>
                 </div>
                 <div class="form-group">
                     <label for="select" class="col-lg-2 control-label">Selects</label>
                     <div class="col-lg-10">
-                        <select class="form-control" id="select">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <br>
-                        <select multiple="" class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select name="status" class="form-control">
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tidak Aktif">Tidak Aktif</option>
                         </select>
                     </div>
                 </div>
@@ -87,6 +64,9 @@
         </form>
     </div>
 </div>
+
+    <script src="<?php echo base_url() ?>js/jquery.js"></script>
+    <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
 </body>
 </html>
 
